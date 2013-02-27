@@ -42,10 +42,9 @@
   "Encrypt the string given to us as Base64 encoded Md5 byte stream"
   (replace-regexp-in-string "=" "A" (replace-regexp-in-string "+" "9" (replace-regexp-in-string "/" "8" (base64-encode-string (secure-hash 'md5 pickle nil nil t))))))
 
-(defun sgp-prompt-pass () (interactive)
+(defun sgp-prompt-pass (domain password)
   "Interactive function to prompt for domain and password and populate paste buffer with new password"
-  (setq domain (read-from-minibuffer "SuperGenPass: Domain? "))
-  (setq password (read-passwd "SuperGenPass: Password? "))
+  (interactive (list (read-string "SuperGenPass: Domain: ") (read-passwd "SuperGenPass Password: ")))
   (kill-new (format "%s" (sgp-generate password domain))))
 
 (defun supergenpass (password domain)
@@ -73,14 +72,14 @@
          (string-match "[A-Z]" (substring results 0 len))
          (string-match "^[a-z]" (substring results 0 len)))))
 
-(defun sgp-test-compat () (interactive)
-  (if
-      (and
-       (equal "ubRPZrdfu5" (sgp-generate "abcdefg" "cnn.com"))
-       (equal "xaIlcL02A3" (sgp-generate "TheSeasonedSchemer" "slashdot.org"))
-       (equal "oZ8YbHxSKg" (sgp-generate "LiveLongAndProper" "lisp.org")))
-      (message "All Passed")
-    (message "Failures!")))
+;; (defun sgp-test-compat () (interactive)
+;;   (if
+;;       (and
+;;        (equal "ubRPZrdfu5" (sgp-generate "abcdefg" "cnn.com"))
+;;        (equal "xaIlcL02A3" (sgp-generate "TheSeasonedSchemer" "slashdot.org"))
+;;        (equal "oZ8YbHxSKg" (sgp-generate "LiveLongAndProper" "lisp.org")))
+;;       (message "All Passed")
+;;     (message "Failures!")))
 
 (provide 'supergenpass)
 
