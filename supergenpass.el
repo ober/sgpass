@@ -93,6 +93,5 @@
 
 
 (provide 'supergenpass)
-(substring "abcdefg
 
 ;; supergenpass.el ends here
