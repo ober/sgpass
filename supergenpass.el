@@ -53,24 +53,22 @@
 (defun sgp-generate (password domain)
   "Create a unique password for a given domain and master password"
   (let ((i 0) (results (format "%s:%s" password domain)))
-  (setq results (format "%s:%s" password domain))
-  (loop until
-        (and (> i 10) (secure-enough results 10))
-        do
-        (setq results (b64-md5 results))
-        (setq i (1+ i))
-        )
-  (substring results 0 10)))
+    (setq results (format "%s:%s" password domain))
+    (while
+        (not (and (> i 10) (secure-enough results 10)))
+      (setq results (b64-md5 results))
+      (setq i (1+ i)))
+    (substring results 0 10)))
 
 (defun secure-enough (results len)
   "Ensure the password we have is sufficiently secure"
   (let
       ((case-fold-search nil))
-        (and
-         (> (length results) len)
-         (string-match "[0-9]" (substring results 0 len))
-         (string-match "[A-Z]" (substring results 0 len))
-         (string-match "^[a-z]" (substring results 0 len)))))
+    (and
+     (> (length results) len)
+     (string-match "[0-9]" (substring results 0 len))
+     (string-match "[A-Z]" (substring results 0 len))
+     (string-match "^[a-z]" (substring results 0 len)))))
 
 ;; (defun sgp-test-compat () (interactive)
 ;;   (if
