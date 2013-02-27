@@ -1,6 +1,6 @@
 ;;; supergenpass.el --- SuperGenPass for Emacs
 
-;; Copyright (C) 2012  Jaime Fournier <jaimef@linbsd.org>
+;; Copyright (C) 2013  Jaime Fournier <jaimef@linbsd.org>
 
 ;; Author: Jaime Fournier <jaimef@linbsd.org>
 ;; Keywords: SuperGenPass
