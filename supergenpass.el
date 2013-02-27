@@ -78,16 +78,16 @@
       nil
       )))
 
-(defun sgp_test_compat () (interactive)
-  (if
-      (and
-       (equal "ubRPZrdfu5" (sgp_generate "abcdefg" "cnn.com"))
-       (equal "xaIlcL02A3" (sgp_generate "TheSeasonedSchemer" "slashdot.org"))
-       (equal "oZ8YbHxSKg" (sgp_generate "LiveLongAndProper" "lisp.org"))
-       )
-      (message "All Passed")
-    (message "Failures!")
-    ))
+;; (defun sgp_test_compat () (interactive)
+;;   (if
+;;       (and
+;;        (equal "ubRPZrdfu5" (sgp_generate "abcdefg" "cnn.com"))
+;;        (equal "xaIlcL02A3" (sgp_generate "TheSeasonedSchemer" "slashdot.org"))
+;;        (equal "oZ8YbHxSKg" (sgp_generate "LiveLongAndProper" "lisp.org"))
+;;        )
+;;       (message "All Passed")
+;;     (message "Failures!")
+;;     ))
 
 (provide 'supergenpass)
 
