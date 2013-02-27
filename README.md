@@ -9,3 +9,11 @@ Elisp implementation of SuperGenPass
 For additional details see:
 
 http://supergenpass.com/
+
+
+To Use:
+
+(require 'supergenpass)
+(supergenpass master-secret-password "google.com")
+
+This will populate the kill-ring so that the password can be pasted.
