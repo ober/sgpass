@@ -59,11 +59,9 @@
   (loop until
         (and (> i 10) (secure-enough results 10))
         do
-        (message "%s %s %s" i results (secure-enough results 10))
         (setq results (b64_md5 results))
         (setq i (+ i 1))
         )
-  (message "%s %s %s" i results (secure-enough results 10))
   (substring results 0 10))
 
 (defun secure-enough (results len)
