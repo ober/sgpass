@@ -17,3 +17,7 @@ To Use:
 (supergenpass master-secret-password "google.com")
 
 This will populate the kill-ring so that the password can be pasted.
+
+TODO:
+Remove from kill-ring after paste.
+Cleanup this no doubt ugly elisp
