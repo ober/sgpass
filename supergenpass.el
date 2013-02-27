@@ -30,11 +30,28 @@
 
 ;;; Code:
 
+;; Customizations
+
+;; (defcustom spg-domains nil
+;;   "List of SuperGenPass Domains"
+;;   :tag "SGP Domains"
+;;   :group 'sgp
+;;   :type 'data)
+
 (defun b64_md5 (pickle)
   "Encrypt the string given to us as Base64 encoded Md5 byte stream"
   (replace-regexp-in-string "=" "A" (replace-regexp-in-string "+" "9" (replace-regexp-in-string "/" "8" (base64-encode-string (secure-hash 'md5 pickle nil nil t))))))
 
+(defun sgp_prompt_pass () (interactive)
+  "Interactive function to prompt for domain and password and populate paste buffer with new password"
+  (setq domain (read-from-minibuffer "SuperGenPass: Domain? "))
+  (setq password (read-passwd "SuperGenPass: Password? "))
+  (kill-new (format "%s" (sgp_generate password domain))))
+
 (defun supergenpass (password domain)
+  (kill-new (format "%s" (sgp_generate password domain))))
+
+(defun sgp_generate (password domain)
   "Create a unique password for a given domain and master password"
   (setq i 0)
   (setq result (format "%s:%s" password domain))
@@ -44,7 +61,7 @@
         (setq result (b64_md5 result))
         (setq i (+ i 1))
         )
-  (kill-new (format "%s" (substring result 0 10))))
+  (substring result 0 10))
 
 (defun secure-enough (results len)
   "Ensure the password we have is sufficiently secure"
