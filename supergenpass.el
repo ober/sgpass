@@ -47,6 +47,11 @@
   (interactive (list (read-string "SuperGenPass: Domain: ") (read-passwd "SuperGenPass Password: ")))
   (kill-new (format "%s" (sgp-generate password domain))))
 
+(defun sgp (domain)
+  "Interactive function to prompt for domain and use the master password loaded from secrets"
+  (interactive (list (read-string "SuperGenPass: Domain: ")))
+  (kill-new (format "%s" (sgp-generate sgp-master-password domain))))
+
 (defun supergenpass (password domain)
   (kill-new (format "%s" (sgp-generate password domain))))
 
