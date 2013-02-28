@@ -60,7 +60,7 @@
   (let ((i 0) (results (format "%s:%s" password domain)))
     (setq results (format "%s:%s" password domain))
     (while
-        (not (and (> i 10) (secure-enough results 10)))
+        (not (and (> i 9) (secure-enough results 10)))
       (setq results (b64-md5 results))
       (setq i (1+ i)))
     (substring results 0 10)))
@@ -80,6 +80,7 @@
 ;;       (and
 ;;        (equal "ubRPZrdfu5" (sgp-generate "abcdefg" "cnn.com"))
 ;;        (equal "xaIlcL02A3" (sgp-generate "TheSeasonedSchemer" "slashdot.org"))
+;;        (equal "xXuB5haYik" (sgp-generate "ColdAndFluRelief" "flowdock.com"))
 ;;        (equal "oZ8YbHxSKg" (sgp-generate "LiveLongAndProper" "lisp.org")))
 ;;       (message "All Passed")
 ;;     (message "Failures!")))
