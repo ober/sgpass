@@ -65,6 +65,9 @@
       (setq i (1+ i)))
     (substring results 0 10)))
 
+(defun s-pwgen () (interactive)
+  (message (format "%s" (sgp-generate (random 1000000) (random 1000000)))))
+
 (defun secure-enough (results len)
   "Ensure the password we have is sufficiently secure"
   (let
