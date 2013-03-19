@@ -30,7 +30,6 @@
 
 ;;; Code:
 
-;; (defcustom spg-domains nil
 (defun b64-md5 (pickle)
   "Encrypt the string given to us as Base64 encoded Md5 byte stream"
   (replace-regexp-in-string "=" "A" (replace-regexp-in-string "+" "9" (replace-regexp-in-string "/" "8" (base64-encode-string (secure-hash 'md5 pickle nil nil t))))))
@@ -73,4 +72,4 @@
 
 (provide 'supergenpass)
 
-;; supergenpass.el ends here
+;;; supergenpass.el ends here
