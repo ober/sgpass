@@ -54,7 +54,6 @@
     (setq results (format "%s:%s" password domain))
     (while
         (not (and (> i 9) (secure-enough results 10)))
-        (message (format "%s : %i" results i ))
       (setq results (b64-md5 results))
       (setq i (1+ i)))
     (substring results 0 10)))
@@ -64,7 +63,6 @@
 
 (defun secure-enough (results len)
   "Ensure the password we have is sufficiently secure"
-  (message (format "%s" results))
   (let
       ((case-fold-search nil))
     (and
@@ -72,7 +70,6 @@
      (string-match "[0-9]" (substring results 0 len))
      (string-match "[A-Z]" (substring results 0 len))
      (string-match "^[a-z]" (substring results 0 len)))))
-
 
 (provide 'supergenpass)
 
