@@ -45,6 +45,7 @@
   (kill-new (format "%s" (sgp-generate sgp-master-password domain))))
 
 (defun supergenpass (password domain)
+  "Create a unique password given a master password and domain"
   (kill-new (format "%s" (sgp-generate password domain))))
 
 (defun sgp-generate (password domain)
@@ -58,6 +59,7 @@
     (substring results 0 10)))
 
 (defun s-pwgen () (interactive)
+  "Generate secure random password"
   (message (format "%s" (sgp-generate (random 1000000) (random 1000000)))))
 
 (defun secure-enough (results len)
